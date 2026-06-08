@@ -1,0 +1,156 @@
+<div
+  class="min-h-screen bg-[#07080e] text-slate-100 p-6 sm:p-8 font-sans selection:bg-violet-500/30"
+>
+  <!-- Sarlavha va Top Panel -->
+  <div
+    class="max-w-7xl mx-auto mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800/40 pb-6"
+  >
+    <div>
+      <h1
+        class="text-3xl sm:text-4xl font-black tracking-tight bg-linear-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent"
+      >
+        Premium Mahsulotlar
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1">
+        Siz uchun eng sara va sifatli mahsulotlar to'plami
+      </p>
+    </div>
+    <span
+      class="text-xs font-mono px-3.5 py-1.5 bg-slate-900 border border-slate-800/80 rounded-full text-violet-400 font-semibold tracking-wide shadow-xs"
+    >
+      Katalog: {{ products().length }} ta mahsulot
+    </span>
+  </div>
+
+  <!-- Agar ma'lumot hali yuklanmagan bo'lsa (yoki bo'sh bo'lsa), Skeleton darhol chiziladi -->
+  @if (products().length === 0) {
+    <div
+      class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8"
+    >
+      @for (dummy of [1, 2, 3, 4, 5, 6, 7, 8]; track dummy) {
+        <div
+          class="animate-pulse flex flex-col justify-between rounded-2xl border border-slate-800/40 bg-slate-900/10 p-5"
+        >
+          <div>
+            <div
+              class="w-full aspect-square rounded-xl bg-linear-to-b from-slate-950 to-slate-900/40 border border-slate-800/30 mb-5 relative"
+            >
+              <div class="absolute top-3 left-3 h-5 w-16 bg-slate-800/80 rounded-md"></div>
+            </div>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="h-5 w-12 rounded-md bg-slate-800/60"></div>
+              <div class="h-3 w-20 rounded bg-slate-800/30"></div>
+            </div>
+            <div class="space-y-2.5 mb-4">
+              <div class="h-3.5 w-full rounded-md bg-slate-800/70"></div>
+              <div class="h-3.5 w-2/3 rounded-md bg-slate-800/50"></div>
+            </div>
+          </div>
+          <div class="mt-5 pt-4 border-t border-slate-900/60 flex items-center justify-between">
+            <div class="space-y-1.5">
+              <div class="h-2 w-8 rounded bg-slate-800/40"></div>
+              <div class="h-5 w-20 rounded-md bg-slate-800/80"></div>
+            </div>
+            <div class="h-8 w-10 rounded-xl bg-slate-800/60 border border-slate-800/40"></div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <!-- Ma'lumot kelishi bilan asosiy Grid ko'rsatiladi -->
+    <div
+      class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8"
+    >
+      @for (item of products(); track item.id) {
+        <div
+          class="group relative flex flex-col justify-between rounded-2xl border border-slate-800/60 bg-slate-900/20 p-5 backdrop-blur-md transition-all duration-300 hover:border-slate-700/80 hover:bg-slate-900/40 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)]"
+        >
+          <div>
+            <!-- Rasm Konteyneri -->
+            <div
+              class="relative w-full aspect-square overflow-hidden rounded-xl bg-linear-to-b from-slate-950 to-slate-900/60 border border-slate-800/40 flex items-center justify-center p-6 mb-5 group-hover:border-slate-700/60 transition-colors duration-300"
+            >
+              <!-- OPTIMIZATSIYA: [priority] orqali birinchi qatordagi rasmlar eng birinchi yuklanadi -->
+              <a href="#" class="w-full h-full block">
+                <img
+                  [ngSrc]="item.image"
+                  [alt]="item.title"
+                  fill
+                  [priority]="$index < 4"
+                  class="max-h-[85%] max-w-[85%] object-contain object-center transition-all duration-500 group-hover:scale-105 group-hover:rotate-1 filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
+                />
+              </a>
+
+              <span
+                class="absolute top-3 left-3 text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-md bg-slate-950/90 text-slate-300 border border-slate-800/60 backdrop-blur-sm"
+              >
+                {{ item.category }}
+              </span>
+            </div>
+
+            <!-- Reyting -->
+            <div class="flex items-center gap-1.5 mb-2.5 text-xs">
+              <div
+                class="flex items-center text-amber-400 bg-amber-500/5 px-2 py-0.5 rounded-md border border-amber-500/10"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-3 w-3 fill-current"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <span class="ml-1 font-semibold text-amber-300/90">{{ item.rating.rate }}</span>
+              </div>
+              <span class="text-slate-500 font-mono">({{ item.rating.count }} xaridor)</span>
+            </div>
+
+            <!-- Sarlavha -->
+            <h3
+              class="font-semibold text-sm leading-snug text-slate-200 line-clamp-2 min-h-10 group-hover:text-white transition-colors duration-200"
+            >
+              {{ item.title }}
+            </h3>
+          </div>
+
+          <!-- Narx va Tugma -->
+          <div
+            class="mt-5 pt-4 border-t border-slate-800/60 flex items-center justify-between gap-2"
+          >
+            <div class="flex flex-col">
+              <span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold"
+                >Narxi</span
+              >
+              <span class="text-lg font-extrabold text-white tracking-tight">
+                {{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}
+              </span>
+            </div>
+
+            <!-- OPTIMIZATSIYA: aria-label orqali Accessibility ballini 100 ga chiqaramiz -->
+            <button
+              aria-label="Sotib olish"
+              class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700/50 text-slate-300 text-xs font-medium transition-all duration-300 hover:bg-violet-600 hover:text-white hover:border-violet-500 active:scale-95 shadow-md cursor-pointer"
+            >
+              <span
+                class="hidden sm:inline opacity-0 max-w-0 group-hover:opacity-100 group-hover:max-w-20 transition-all duration-500 ease-out overflow-hidden whitespace-nowrap"
+                >Sotib olish</span
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
