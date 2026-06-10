@@ -1,87 +1,79 @@
- <div
-          class="group relative flex flex-col justify-between rounded-2xl border border-slate-800/60 bg-slate-900/20 p-5 backdrop-blur-md transition-all duration-300 hover:border-slate-700/80 hover:bg-slate-900/40 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)]"
-        >
-          <div>
-            <!-- Rasm Konteyneri -->
-            <div
-              class="relative w-full aspect-square overflow-hidden rounded-xl bg-linear-to-b from-slate-950 to-slate-900/60 border border-slate-800/40 flex items-center justify-center p-6 mb-5 group-hover:border-slate-700/60 transition-colors duration-300"
-            >
-              <!-- OPTIMIZATSIYA: [priority] orqali birinchi qatordagi rasmlar eng birinchi yuklanadi -->
-              <a href="#" class="w-full h-full block">
-                <img
-                  [ngSrc]="item.image"
-                  [alt]="item.title"
-                  fill
-                  class="max-h-[85%] max-w-[85%] object-contain object-center transition-all duration-500 group-hover:scale-105 group-hover:rotate-1 filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
-                />
-              </a>
+<div
+  class="group relative flex flex-col justify-between rounded-2xl border border-slate-800/60 bg-slate-900/20 p-5 backdrop-blur-md transition-all duration-300 hover:border-slate-700/80 hover:bg-slate-900/40 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)]"
+>
+  <div>
+    <div
+      class="relative w-full aspect-square overflow-hidden rounded-xl bg-linear-to-b from-slate-950 to-slate-900/60 border border-slate-800/40 flex items-center justify-center p-6 mb-5 group-hover:border-slate-700/60 transition-colors duration-300"
+    >
+      <div class="w-full h-full block">
+        <img
+          [ngSrc]="item.image"
+          [alt]="item.title"
+          fill
+          class="max-h-[85%] max-w-[85%] object-contain object-center transition-all duration-500 group-hover:scale-105 group-hover:rotate-1 filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
+        />
+      </div>
 
-              <span
-                class="absolute top-3 left-3 text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-md bg-slate-950/90 text-slate-300 border border-slate-800/60 backdrop-blur-sm"
-              >
-                {{ item.category }}
-              </span>
-            </div>
+      <span
+        class="absolute top-3 left-3 text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-md bg-slate-950/90 text-slate-300 border border-slate-800/60 backdrop-blur-sm"
+      >
+        {{ item.category }}
+      </span>
+    </div>
 
-            <!-- Reyting -->
-            <div class="flex items-center gap-1.5 mb-2.5 text-xs">
-              <div
-                class="flex items-center text-amber-400 bg-amber-500/5 px-2 py-0.5 rounded-md border border-amber-500/10"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-3 w-3 fill-current"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                  />
-                </svg>
-                <span class="ml-1 font-semibold text-amber-300/90">{{ item.rating.rate }}</span>
-              </div>
-              <span class="text-slate-500 font-mono">({{ item.rating.count }} xaridor)</span>
-            </div>
+    <!-- Reyting -->
+    <div class="flex items-center gap-1.5 mb-2.5 text-xs">
+      <div
+        class="flex items-center text-amber-400 bg-amber-500/5 px-2 py-0.5 rounded-md border border-amber-500/10"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 fill-current" viewBox="0 0 20 20">
+          <path
+            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+          />
+        </svg>
+        <span class="ml-1 font-semibold text-amber-300/90">{{ item.rating.rate }}</span>
+      </div>
+      <span class="text-slate-500 font-mono">({{ item.rating.count }} xaridor)</span>
+    </div>
 
-            <!-- Sarlavha -->
-            <h3
-              class="font-semibold text-sm leading-snug text-slate-200 line-clamp-2 min-h-10 group-hover:text-white transition-colors duration-200"
-            >
-              {{ item.title }}
-            </h3>
-          </div>
+    <!-- Sarlavha -->
+    <h3
+      class="font-semibold text-sm leading-snug text-slate-200 line-clamp-2 min-h-10 group-hover:text-white transition-colors duration-200"
+    >
+      {{ item.title }}
+    </h3>
+  </div>
 
-          <!-- Narx va Tugma -->
-          <div
-            class="mt-5 pt-4 border-t border-slate-800/60 flex items-center justify-between gap-2"
-          >
-            <div class="flex flex-col">
-              <span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold"
-                >Narxi</span
-              >
-              <span class="text-lg font-extrabold text-white tracking-tight">
-                {{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}
-              </span>
-            </div>
+  <!-- Narx va Tugma -->
+  <div class="mt-5 pt-4 border-t border-slate-800/60 flex items-center justify-between gap-2">
+    <div class="flex flex-col">
+      <span class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Narxi</span>
+      <span class="text-lg font-extrabold text-white tracking-tight">
+        {{ item.price | currency: 'USD' : 'symbol' : '1.2-2' }}
+      </span>
+    </div>
 
-            <!-- OPTIMIZATSIYA: aria-label orqali Accessibility ballini 100 ga chiqaramiz -->
-            <button
-              aria-label="Sotib olish"
-              class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700/50 text-slate-300 text-xs font-medium transition-all duration-300 hover:bg-violet-600 hover:text-white hover:border-violet-500 active:scale-95 shadow-md cursor-pointer"
-            >
-              <span
-                class="hidden sm:inline opacity-0 max-w-0 group-hover:opacity-100 group-hover:max-w-20 transition-all duration-500 ease-out overflow-hidden whitespace-nowrap"
-                >Sotib olish</span
-              >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2.5"
-                stroke="currentColor"
-                class="w-4 h-4"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </button>
-          </div>
-        </div>
+    <!-- OPTIMIZATSIYA: aria-label orqali Accessibility ballini 100 ga chiqaramiz -->
+    <button
+      type="button"
+      aria-label="Sotib olish"
+      (click)="addToCart(item)"
+      class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 border border-slate-700/50 text-slate-300 text-xs font-medium transition-all duration-300 hover:bg-violet-600 hover:text-white hover:border-violet-500 active:scale-95 shadow-md cursor-pointer"
+    >
+      <span
+        class="hidden sm:inline opacity-0 max-w-0 group-hover:opacity-100 group-hover:max-w-20 transition-all duration-500 ease-out overflow-hidden whitespace-nowrap"
+        >Sotib olish</span
+      >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2.5"
+        stroke="currentColor"
+        class="w-4 h-4"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+    </button>
+  </div>
+</div>

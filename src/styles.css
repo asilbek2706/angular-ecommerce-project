@@ -1,3 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+.product-toast.mat-mdc-snack-bar-container {
+	--mdc-snackbar-container-color: #0f172a;
+	--mat-snack-bar-button-color: #f8fafc;
+	border: 1px solid rgba(148, 163, 184, 0.22);
+	border-radius: 16px;
+	box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.product-toast .mdc-snackbar__surface {
+	background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
+}
+
+.product-toast .mat-mdc-snack-bar-label {
+	color: #f8fafc;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+}
+
+.product-toast-error.mat-mdc-snack-bar-container {
+	--mdc-snackbar-container-color: #3f1d24;
+	--mat-snack-bar-button-color: #fff1f2;
+	border-color: rgba(248, 113, 113, 0.25);
+}
+
+.product-toast-error .mdc-snackbar__surface {
+	background: linear-gradient(135deg, rgba(63, 29, 36, 0.96), rgba(88, 28, 45, 0.96));
+}
