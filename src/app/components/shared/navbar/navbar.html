@@ -1,0 +1,85 @@
+<header class="fixed top-0 left-0 right-0 w-full z-50 bg-[#07080e]/75 backdrop-blur-xl border-b border-slate-800/40 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between gap-4">
+    
+    <!-- Logo va Brend nomi -->
+    <a routerLink="/" (click)="closeMenu()" class="flex items-center gap-3 group">
+      <div class="w-9 h-9 rounded-xl bg-linear-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center shadow-lg shadow-violet-500/20 group-hover:scale-105 transition-transform duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-white">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+        </svg>
+      </div>
+      <span class="text-xl sm:text-2xl font-black tracking-tight bg-linear-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent group-hover:from-violet-400 group-hover:to-fuchsia-400 transition-colors duration-300">
+        PremiumShop
+      </span>
+    </a>
+
+    <!-- Katta ekranlar uchun Navigatsiya (md:flex orqali faqat katta ekranda ko'rinadi) -->
+    <nav class="hidden md:flex items-center gap-2 text-base font-semibold">
+      <a
+        routerLink="/products"
+        routerLinkActive="bg-slate-800/60 text-white border-slate-700/60 shadow-inner"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="px-5 py-2.5 rounded-xl text-slate-300 border border-transparent transition-all duration-200 hover:text-white hover:bg-slate-900/40 cursor-pointer"
+      >
+        Products
+      </a>
+
+      <a
+        routerLink="/cart"
+        routerLinkActive="bg-slate-800/60 text-white border-slate-700/60 shadow-inner"
+        class="px-5 py-2.5 rounded-xl text-slate-300 border border-transparent transition-all duration-200 hover:text-white hover:bg-slate-900/40 flex items-center gap-2.5 cursor-pointer"
+      >
+        <span>Cart</span>
+        <span class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold bg-violet-600 text-white rounded-md ring-2 ring-violet-500/20 animate-pulse">
+          0
+        </span>
+      </a>
+    </nav>
+
+    <!-- Mobil va Planshet uchun Burger Tugmasi (md:hidden orqali katta ekranda yashirinadi) -->
+    <button 
+      (click)="toggleMenu()"
+      aria-label="Menyuni ochish"
+      class="md:hidden p-2 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all cursor-pointer"
+    >
+      <!-- Agar menyu yopiq bo'lsa Burger ikonka, ochiq bo'lsa "X" (yopish) ikonkasi chiqadi -->
+      @if (!isMenuOpen) {
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      }
+    </button>
+  </div>
+
+  <!-- Mobil va Planshet uchun Ochiladigan Menyu Paneli -->
+  <!-- @if orqali faqat bosilganda render bo'ladi va silliq animatsiya bilan ochiladi -->
+  @if (isMenuOpen) {
+    <div class="md:hidden border-t border-slate-800/50 bg-[#07080e]/95 backdrop-blur-2xl px-6 py-4 space-y-2 absolute left-0 right-0 w-full shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200">
+      <a
+        routerLink="/products"
+        routerLinkActive="bg-slate-800/60 text-white border-slate-700/60"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMenu()"
+        class="block px-4 py-3 rounded-xl text-slate-300 font-semibold border border-transparent transition-all"
+      >
+        Products
+      </a>
+      
+      <a
+        routerLink="/cart"
+        routerLinkActive="bg-slate-800/60 text-white border-slate-700/60"
+        (click)="closeMenu()"
+        class="flex items-center justify-between px-4 py-3 rounded-xl text-slate-300 font-semibold border border-transparent transition-all"
+      >
+        <span>Cart</span>
+        <span class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold bg-violet-600 text-white rounded-md">
+          0
+        </span>
+      </a>
+    </div>
+  }
+</header>

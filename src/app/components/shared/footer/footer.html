@@ -1,0 +1,80 @@
+<footer class="bg-[#07080e] border-t border-slate-800/30 text-slate-400 font-sans mt-auto">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 py-12">
+    
+    <!-- Asosiy Flex Konteyner -->
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 pb-10 border-b border-slate-800/40">
+      
+      <!-- Chap tomon: Brending va Minimalist Shior -->
+      <div class="space-y-3 max-w-sm">
+        <a routerLink="/" class="flex items-center gap-3 group">
+          <div class="w-8 h-8 rounded-xl bg-linear-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center shadow-lg shadow-violet-500/20 group-hover:scale-105 transition-all duration-350">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+          </div>
+          <span class="text-2xl font-black tracking-tight bg-linear-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent group-hover:from-violet-400 group-hover:to-fuchsia-400 transition-all duration-300">
+            PremiumShop
+          </span>
+        </a>
+        <p class="text-sm text-slate-500 leading-relaxed">
+          Faqatgina eng sara, yuqori sifatli mahsulotlar jamlanmasi va siz uchun mukammal raqamli xizmat.
+        </p>
+      </div>
+
+      <!-- O'ng tomon: Grid shaklidagi zamonaviy Ijtimoiy blok -->
+      <div class="w-full lg:w-auto space-y-3.5">
+        <h4 class="text-xs font-bold uppercase tracking-widest text-violet-400/80">
+          {{ 'developer' | uppercase }}
+        </h4>
+        
+        <!-- Tarmoqlar paneli (Yopishib turgan chiroyli tugmalar) -->
+        <div class="grid grid-cols-2 sm:flex sm:items-center gap-3">
+          
+          <!-- Telegram Card -->
+          <a href="https://t.me/as1lbek_2706" target="_blank" aria-label="Telegram" class="flex items-center justify-center gap-2.5 px-4 py-3 sm:py-2.5 rounded-xl bg-slate-900/40 border border-slate-800/60 text-slate-300 transition-all duration-300 hover:bg-slate-800/50 hover:border-violet-500/50 hover:text-white hover:-translate-y-0.5 group shadow-xs">
+            <svg class="w-4 h-4 text-slate-400 group-hover:text-violet-400 transition-colors" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+            <span class="text-xs font-semibold tracking-wide">Telegram</span>
+          </a>
+
+          <!-- X Card -->
+          <a href="https://x.com/Asilbek2706" target="_blank" aria-label="X (Twitter)" class="flex items-center justify-center gap-2.5 px-4 py-3 sm:py-2.5 rounded-xl bg-slate-900/40 border border-slate-800/60 text-slate-300 transition-all duration-300 hover:bg-slate-800/50 hover:border-violet-500/50 hover:text-white hover:-translate-y-0.5 group shadow-xs">
+            <svg class="w-3.5 h-3.5 fill-current text-slate-400 group-hover:text-violet-400 transition-colors" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="text-xs font-semibold tracking-wide">Twitter</span>
+          </a>
+
+          <!-- LinkedIn Card -->
+          <a href="https://linkedin.com/in/asilbek-karomatov-91336b33b" target="_blank" aria-label="LinkedIn" class="flex items-center justify-center gap-2.5 px-4 py-3 sm:py-2.5 rounded-xl bg-slate-900/40 border border-slate-800/60 text-slate-300 transition-all duration-300 hover:bg-slate-800/50 hover:border-violet-500/50 hover:text-white hover:-translate-y-0.5 group shadow-xs">
+            <svg class="w-3.5 h-3.5 fill-current text-slate-400 group-hover:text-violet-400 transition-colors" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+            </svg>
+            <span class="text-xs font-semibold tracking-wide">LinkedIn</span>
+          </a>
+
+          <!-- Facebook Card -->
+          <a href="https://facebook.com/as1lbek2706" target="_blank" aria-label="Facebook" class="flex items-center justify-center gap-2.5 px-4 py-3 sm:py-2.5 rounded-xl bg-slate-900/40 border border-slate-800/60 text-slate-300 transition-all duration-300 hover:bg-slate-800/50 hover:border-violet-500/50 hover:text-white hover:-translate-y-0.5 group shadow-xs">
+            <svg class="w-3.5 h-3.5 fill-current text-slate-400 group-hover:text-violet-400 transition-colors" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <span class="text-xs font-semibold tracking-wide">Facebook</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pastki qism: Kopirayt liniyasi -->
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-600">
+      <p class="tracking-wide">&copy; {{ currentDate | date: 'yyyy' }} PremiumShop. Barcha huquqlar himoyalangan.</p>
+      <div class="flex items-center gap-2 text-[10px] font-bold tracking-widest text-slate-500 bg-slate-900/60 px-3 py-1 rounded-md border border-slate-800/40">
+        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+        PORTFOLIO PROJECT
+      </div>
+    </div>
+
+  </div>
+</footer>
