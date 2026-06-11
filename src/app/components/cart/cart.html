@@ -1,52 +1,49 @@
 <div class="cart-container">
-  <!-- Product Card -->
-  <mat-card class="cart-card">
-    <div class="card-header">
-      <div>
-        <mat-card-title>Shopping Cart</mat-card-title>
-        <mat-card-subtitle>$20.00</mat-card-subtitle>
+  @for (item of cart(); track item.id) {
+    <mat-card class="cart-card">
+      <div class="card-body">
+        <!-- Mahsulot ma'lumotlari -->
+        <div class="product-info">
+          <div class="image-wrapper">
+            <img [src]="item.product.image" alt="{{item.product.title}}" class="product-image" />
+          </div>
+          <div class="product-details">
+            <mat-card-title class="product-title">{{item.product.title}}</mat-card-title>
+            <mat-card-subtitle class="product-price">{{item.product.price | currency:'USD'}}</mat-card-subtitle>
+          </div>
+        </div>
+
+        <!-- Boshqaruv tugmalari bloki -->
+        <div class="action-block">
+          <div class="quantity-controls">
+            <button mat-mini-fab class="qty-btn remove-btn" (click)="decrease(item.id, item.quantity)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span class="quantity">{{item.quantity}}</span>
+            <button mat-mini-fab class="qty-btn add-btn" (click)="increase(item.id, item.quantity)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+          <button mat-icon-button class="delete-btn" matTooltip="O'chirish" (click)="remove(item.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </div>
+    </mat-card>
+  }
 
-      <button mat-icon-button color="warn">
-        <mat-icon>delete_outline</mat-icon>
-      </button>
-    </div>
-
-    <mat-divider></mat-divider>
-
-    <mat-card-content>
-      <div class="quantity-controls">
-        <button mat-mini-fab color="primary">
-          <mat-icon>remove</mat-icon>
-        </button>
-
-        <span class="quantity">2</span>
-
-        <button mat-mini-fab color="primary">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-    </mat-card-content>
-
-    <mat-card-actions align="end">
-      <button mat-raised-button color="warn">
-        <mat-icon>delete</mat-icon>
-        Remove
-      </button>
-    </mat-card-actions>
-  </mat-card>
-
-  <!-- Total Card -->
+  <!-- Total qismi -->
   <mat-card class="total-card">
     <div class="total-content">
-      <div>
-        <p class="total-label">Total Amount</p>
-        <h2>$20.00</h2>
+      <div class="total-text">
+        <p class="total-label">Umumiy hisob</p>
+        <h2 class="total-amount">{{totalPrice() | currency:'USD'}}</h2>
       </div>
 
-      <button mat-raised-button color="warn">
+      <button mat-flat-button class="clear-btn" (click)="clear()">
         <mat-icon>clear_all</mat-icon>
-        Clear Cart
+        Savatchani tozalash
       </button>
     </div>
   </mat-card>
