@@ -21,7 +21,7 @@ export class ProductCard {
       quantity: 1,
     };
 
-    this.cartService.addToCart(cartItem).subscribe({
+    this.cartService.addToCart(cartItem, product.id).subscribe({
       next: () => {
         this._snackBar.open('Mahsulot savatga qo\'shildi', 'OK', {
           duration: 2200,

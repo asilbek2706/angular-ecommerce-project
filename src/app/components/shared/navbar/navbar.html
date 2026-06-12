@@ -48,8 +48,9 @@
         <span>Cart</span>
         <span
           class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold bg-violet-600 text-white rounded-md ring-2 ring-violet-500/20 animate-pulse"
+          aria-label="Savatchadagi mahsulotlar soni"
         >
-          0
+          {{ cartItemCount() }}
         </span>
       </a>
     </nav>
@@ -116,8 +117,9 @@
         <span>Cart</span>
         <span
           class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold bg-violet-600 text-white rounded-md"
+          aria-label="Savatchadagi mahsulotlar soni"
         >
-          0
+          {{ cartItemCount() }}
         </span>
       </a>
     </div>
