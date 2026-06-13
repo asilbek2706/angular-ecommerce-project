@@ -5,27 +5,38 @@
         <!-- Mahsulot ma'lumotlari -->
         <div class="product-info">
           <div class="image-wrapper">
-            <img [src]="item.product.image" alt="{{item.product.title}}" class="product-image" />
+            <img [src]="item.product.image" alt="{{ item.product.title }}" class="product-image" />
           </div>
           <div class="product-details">
-            <mat-card-title class="product-title">{{item.product.title}}</mat-card-title>
-            <mat-card-subtitle class="product-price">{{item.product.price | currency:'USD'}}</mat-card-subtitle>
+            <mat-card-title class="product-title">{{ item.product.title }}</mat-card-title>
+            <mat-card-subtitle class="product-price">{{
+              item.product.price | currency: 'USD'
+            }}</mat-card-subtitle>
           </div>
         </div>
 
         <!-- Boshqaruv tugmalari bloki -->
         <div class="action-block">
           <div class="quantity-controls">
-            <button mat-mini-fab class="qty-btn remove-btn" (click)="decrease(item.id, item.quantity)">
+            <button
+              mat-mini-fab
+              class="qty-btn remove-btn"
+              (click)="decrease(item.id, item.quantity)"
+            >
               <mat-icon>remove</mat-icon>
             </button>
-            <span class="quantity">{{item.quantity}}</span>
+            <span class="quantity">{{ item.quantity }}</span>
             <button mat-mini-fab class="qty-btn add-btn" (click)="increase(item.id, item.quantity)">
               <mat-icon>add</mat-icon>
             </button>
           </div>
 
-          <button mat-icon-button class="delete-btn" matTooltip="O'chirish" (click)="remove(item.id)">
+          <button
+            mat-icon-button
+            class="delete-btn"
+            matTooltip="O'chirish"
+            (click)="remove(item.id)"
+          >
             <mat-icon>delete</mat-icon>
           </button>
         </div>
@@ -33,18 +44,32 @@
     </mat-card>
   }
 
-  <!-- Total qismi -->
-  <mat-card class="total-card">
-    <div class="total-content">
-      <div class="total-text">
-        <p class="total-label">Umumiy hisob</p>
-        <h2 class="total-amount">{{totalPrice() | currency:'USD'}}</h2>
-      </div>
+  @if (cart().length === 0) {
+    <div class="empty-cart">
+      <mat-icon class="empty-icon">shopping_cart</mat-icon>
+      <p class="empty-text">Savatcha bo'sh</p>
 
-      <button mat-flat-button class="clear-btn" (click)="clear()">
-        <mat-icon>clear_all</mat-icon>
-        Savatchani tozalash
-      </button>
+      <div>
+        <button mat-flat-button color="primary" routerLink="/products">
+          <mat-icon>store</mat-icon>
+          Mahsulotlarni ko'rish
+        </button>
+      </div>
     </div>
-  </mat-card>
+  } @else {
+    <!-- Total qismi -->
+    <mat-card class="total-card">
+      <div class="total-content">
+        <div class="total-text">
+          <p class="total-label">Umumiy hisob</p>
+          <h2 class="total-amount">{{ totalPrice() | currency: 'USD' }}</h2>
+        </div>
+
+        <button mat-flat-button class="clear-btn" (click)="clear()">
+          <mat-icon>clear_all</mat-icon>
+          Savatchani tozalash
+        </button>
+      </div>
+    </mat-card>
+  }
 </div>

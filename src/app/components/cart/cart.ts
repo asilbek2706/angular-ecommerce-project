@@ -5,10 +5,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { CartService } from '../../services/cart.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  imports: [MatCardModule, MatButtonModule, MatIconModule, MatDividerModule, CurrencyPipe],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, MatDividerModule, CurrencyPipe, RouterLink],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })

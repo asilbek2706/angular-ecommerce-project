@@ -1,11 +1,10 @@
 <header
-  class="fixed top-0 left-0 right-0 w-full z-50 bg-[#040a41] backdrop-blur-xl border-b border-slate-800/40 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 w-full z-50 bg-[#040a41]/80 backdrop-blur-md border-b border-slate-800/40 transition-all duration-300"
 >
   <div class="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between gap-4">
-    <!-- Logo va Brend nomi -->
     <a routerLink="/" (click)="closeMenu()" class="flex items-center gap-3 group">
       <div
-        class="w-9 h-9 rounded-xl bg-linear-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center shadow-lg shadow-violet-500/20 group-hover:scale-105 transition-transform duration-300"
+        class="w-9 h-9 rounded-xl bg-linear-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center shadow-lg shadow-violet-500/20 group-hover:scale-105 group-hover:shadow-fuchsia-500/30 transition-all duration-300"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,31 +22,35 @@
         </svg>
       </div>
       <span
-        class="text-xl sm:text-2xl font-black tracking-tight bg-linear-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent group-hover:from-violet-400 group-hover:to-fuchsia-400 transition-colors duration-300"
+        class="text-xl sm:text-2xl font-black tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent group-hover:from-violet-400 group-hover:to-fuchsia-400 transition-colors duration-300"
       >
         PremiumShop
       </span>
     </a>
 
-    <!-- Katta ekranlar uchun Navigatsiya (md:flex orqali faqat katta ekranda ko'rinadi) -->
-    <nav class="hidden md:flex items-center gap-2 text-base font-semibold">
+    <nav class="hidden md:flex items-center gap-3 text-base font-semibold">
       <a
         routerLink="/products"
-        routerLinkActive="bg-slate-800/60 text-white border-slate-700/60 shadow-inner"
+        routerLinkActive="bg-slate-800/50 text-white border-violet-500/30 shadow-md shadow-violet-500/5"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="px-5 py-2.5 rounded-xl text-slate-300 border border-transparent transition-all duration-200 hover:text-white hover:bg-slate-900/40 cursor-pointer"
+        class="px-5 py-2.5 rounded-xl text-slate-300 border border-transparent transition-all duration-200 hover:text-white hover:bg-slate-900/40 cursor-pointer hover:-translate-y-0.5"
       >
         Products
       </a>
 
       <a
         routerLink="/cart"
-        routerLinkActive="bg-slate-800/60 text-white border-slate-700/60 shadow-inner"
-        class="px-5 py-2.5 rounded-xl text-slate-300 border border-transparent transition-all duration-200 hover:text-white hover:bg-slate-900/40 flex items-center gap-2.5 cursor-pointer"
+        routerLinkActive="bg-slate-800/50 text-white border-violet-500/30 shadow-md shadow-violet-500/5"
+        class="px-5 py-2.5 rounded-xl text-slate-300 border border-transparent transition-all duration-200 hover:text-white hover:bg-slate-900/40 flex items-center gap-2.5 cursor-pointer hover:-translate-y-0.5"
       >
         <span>Cart</span>
         <span
-          class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold bg-violet-600 text-white rounded-md ring-2 ring-violet-500/20 animate-pulse"
+          class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold text-white rounded-md ring-4 transition-all duration-300 shadow-[0_0_10px_rgba(124,58,237,0.3)]"
+          [class.bg-violet-600]="cartItemCount() > 0"
+          [class.ring-violet-500/20]="cartItemCount() > 0"
+          [class.animate-pulse]="cartItemCount() > 0"
+          [class.bg-slate-700]="cartItemCount() === 0"
+          [class.ring-transparent]="cartItemCount() === 0"
           aria-label="Savatchadagi mahsulotlar soni"
         >
           {{ cartItemCount() }}
@@ -55,13 +58,11 @@
       </a>
     </nav>
 
-    <!-- Mobil va Planshet uchun Burger Tugmasi (md:hidden orqali katta ekranda yashirinadi) -->
     <button
       (click)="toggleMenu()"
       aria-label="Menyuni ochish"
-      class="md:hidden p-2 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all cursor-pointer"
+      class="md:hidden p-2 rounded-xl bg-slate-900/60 border border-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all cursor-pointer shadow-inner active:scale-95"
     >
-      <!-- Agar menyu yopiq bo'lsa Burger ikonka, ochiq bo'lsa "X" (yopish) ikonkasi chiqadi -->
       @if (!isMenuOpen) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -92,31 +93,33 @@
     </button>
   </div>
 
-  <!-- Mobil va Planshet uchun Ochiladigan Menyu Paneli -->
-  <!-- @if orqali faqat bosilganda render bo'ladi va silliq animatsiya bilan ochiladi -->
   @if (isMenuOpen) {
     <div
-      class="md:hidden border-t border-slate-800/50 bg-[#07080e]/95 backdrop-blur-2xl px-6 py-4 space-y-2 absolute left-0 right-0 w-full shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200"
+      class="md:hidden border-t border-slate-800/60 bg-[#060814]/95 backdrop-blur-2xl px-6 py-5 space-y-2 absolute left-0 right-0 w-full shadow-2xl transition-all duration-300"
     >
       <a
         routerLink="/products"
-        routerLinkActive="bg-slate-800/60 text-white border-slate-700/60"
+        routerLinkActive="bg-slate-800/60 text-white border-violet-500/20"
         [routerLinkActiveOptions]="{ exact: true }"
         (click)="closeMenu()"
-        class="block px-4 py-3 rounded-xl text-slate-300 font-semibold border border-transparent transition-all"
+        class="block px-4 py-3 rounded-xl text-slate-300 font-semibold border border-transparent transition-all hover:bg-slate-900/40 active:bg-slate-800/60"
       >
         Products
       </a>
 
       <a
         routerLink="/cart"
-        routerLinkActive="bg-slate-800/60 text-white border-slate-700/60"
+        routerLinkActive="bg-slate-800/60 text-white border-violet-500/20"
         (click)="closeMenu()"
-        class="flex items-center justify-between px-4 py-3 rounded-xl text-slate-300 font-semibold border border-transparent transition-all"
+        class="flex items-center justify-between px-4 py-3 rounded-xl text-slate-300 font-semibold border border-transparent transition-all hover:bg-slate-900/40 active:bg-slate-800/60"
       >
         <span>Cart</span>
         <span
-          class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold bg-violet-600 text-white rounded-md"
+          class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold rounded-md"
+          [class.bg-violet-600]="cartItemCount() > 0"
+          [class.text-white]="cartItemCount() > 0"
+          [class.bg-slate-800]="cartItemCount() === 0"
+          [class.text-slate-500]="cartItemCount() === 0"
           aria-label="Savatchadagi mahsulotlar soni"
         >
           {{ cartItemCount() }}
